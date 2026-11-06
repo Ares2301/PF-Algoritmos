@@ -1,16 +1,15 @@
-// Variables globales
+
 var registros = [];
 var editando = null;
 var visibles = {};
 var CLAVE_LOCAL = "mis_expedientes";
 var CLAVE_TEMA = "modo_oscuro";
 
-// Función corta para buscar elementos por ID
 function $(id) {
   return document.getElementById(id);
 }
 
-// Cifrado César básico
+
 var alfabetoMin = "abcdefghijklmnñopqrstuvwxyz";
 var alfabetoMay = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 
@@ -31,7 +30,7 @@ function cifrarTexto(texto, k) {
       resultado += alfabetoMay[(pos + k) % n];
       continue;
     }
-    resultado += c; // Si es espacio o símbolo se queda igual
+    resultado += c; 
   }
   return resultado;
 }
@@ -49,7 +48,7 @@ function descifrar(t) {
   return cifrarTexto(t, -obtenerDesplazamiento());
 }
 
-// Contador de comparaciones para algoritmos
+
 var contadorComparaciones = 0;
 
 function compararCadenas(a, b) {
@@ -61,7 +60,6 @@ function compararCadenas(a, b) {
   return 0;
 }
 
-// Algoritmos de ordenamiento
 function ordenarBurbuja(lista, campo) {
   var n = lista.length;
   for (var i = 0; i < n - 1; i++) {
@@ -95,7 +93,7 @@ function ordenarSeleccion(lista, campo) {
   }
 }
 
-// Algoritmos de búsqueda
+
 function buscarSecuencial(lista, codigo) {
   for (var i = 0; i < lista.length; i++) {
     if (compararCadenas(lista[i].codigo, codigo) === 0) {
@@ -132,7 +130,6 @@ function estaOrdenadoPorCodigo(lista) {
   return true;
 }
 
-// Mensajes en pantalla tipo Toast
 function mostrarAviso(mensaje, esError) {
   var toast = $("toast");
   toast.textContent = mensaje;
@@ -148,7 +145,6 @@ function mostrarAviso(mensaje, esError) {
   }, 3000);
 }
 
-// Guardar en LocalStorage
 function guardarLocal() {
   try {
     localStorage.setItem(CLAVE_LOCAL, JSON.stringify(registros));
@@ -157,7 +153,6 @@ function guardarLocal() {
   }
 }
 
-// Renderizar tabla
 function actualizarTabla(resaltarIndice) {
   var tbody = $("rows");
   tbody.innerHTML = "";
@@ -209,7 +204,6 @@ function limpiarFormulario() {
   editando = null;
 }
 
-// Acciones de botones en la tabla
 window.toggleVer = function(i) {
   var codigo = registros[i].codigo;
   visibles[codigo] = !visibles[codigo];
@@ -242,7 +236,6 @@ window.eliminarRegistro = function(i) {
   }
 };
 
-// Eventos del formulario
 $("f").addEventListener("submit", function(e) {
   e.preventDefault();
   
@@ -293,7 +286,6 @@ $("cancelBtn").addEventListener("click", function() {
   limpiarFormulario();
 });
 
-// Botones de ordenamiento y búsqueda
 $("sortBtn").addEventListener("click", function() {
   if (registros.length < 2) {
     mostrarAviso("Se necesitan al menos 2 expedientes para ordenar.", true);
@@ -357,7 +349,6 @@ $("findBtn").addEventListener("click", function() {
   }
 });
 
-// Manejo de archivos JSON
 $("openBtn").addEventListener("click", function() {
   $("file").click();
 });
@@ -432,7 +423,6 @@ $("demoBtn").addEventListener("click", function() {
   mostrarAviso("Datos de ejemplo cargados.");
 });
 
-// Lógica del Botón de Modo Oscuro / Claro
 var themeToggleBtn = $("themeToggleBtn");
 
 function aplicarTema(esOscuro) {
@@ -454,7 +444,6 @@ themeToggleBtn.addEventListener("click", function() {
   } catch (e) {}
 });
 
-// Inicialización al cargar la página
 (function() {
   limpiarFormulario();
   try {
@@ -462,7 +451,7 @@ themeToggleBtn.addEventListener("click", function() {
     if (guardado) {
       registros = JSON.parse(guardado);
     }
-    // Cargar preferencia de tema guardada
+
     var temaGuardado = localStorage.getItem(CLAVE_TEMA);
     if (temaGuardado === "1") {
       aplicarTema(true);
