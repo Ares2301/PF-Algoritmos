@@ -11,7 +11,7 @@
   <div class="wrap">
     <div>
       <h1>Archivo de expedientes</h1>
-      <p>Guarda, ordena y encuentra tus expedientes en un solo lugar. Todo es ficticio y cada descripción viaja cifrada.</p>
+      <p>Guarda, ordena y encuentra tus expedientes en un solo lugar. Cada descripción viaja cifrada.</p>
       <div class="chips"><span><b id="count">0</b> expedientes</span><span>Ordenar</span><span>Buscar</span><span>Cifrar</span></div>
     </div>
     <div class="demo" aria-hidden="true"><small>Así trabaja el cifrado César (+3)</small><div class="big"><i class="a">HOLA</i><i class="b">KROD</i></div><small>y vuelve a ser HOLA al descifrar</small></div>
@@ -31,7 +31,7 @@
       <label for="fecha">Fecha de registro</label>
       <input id="fecha" type="date">
       <label for="descripcion">Descripción confidencial</label>
-      <textarea id="descripcion" placeholder="Escríbela con tranquilidad, se guarda cifrada."></textarea>
+      <textarea id="descripcion" placeholder="Todo lo que escribas se guardará cifradamente."></textarea>
       <div class="actions">
         <button type="submit" id="saveBtn">Guardar expediente</button>
         <button type="button" class="ghost" id="cancelBtn" hidden>Cancelar edición</button>
@@ -42,7 +42,7 @@
     <h2>Cifrado César</h2>
     <label for="shift">Desplazamiento (tu llave)</label>
     <input id="shift" type="number" min="1" max="26" value="3">
-    <p class="hint">Con +3, «HOLA» se convierte en «KROD». Para leer una descripción necesitas el mismo número con el que se cifró. Es un ejercicio educativo: César no ofrece seguridad real.</p>
+    <p class="hint">La llave que escojamos será necesaria tanto para cifrar como para decifrar</p>
   </section>
 </div>
 
