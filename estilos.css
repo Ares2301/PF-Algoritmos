@@ -1,0 +1,270 @@
+body {
+  margin: 0;
+  background-color: #eef3f8;
+  color: #14243a;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+
+h1, h2, .big {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+header {
+  background: #0a2f57;
+  color: #ffffff;
+  padding: 40px 20px 54px;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.8rem;
+}
+
+header p {
+  margin: 10px 0 0;
+  max-width: 46ch;
+  color: #cfe3f5;
+}
+
+.chips {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.chips span {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.chips b {
+  color: #8fe0ff;
+}
+
+.demo {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 15px;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.demo small {
+  color: #bcd6ee;
+  display: block;
+  font-size: 0.8rem;
+}
+
+.big {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 5px 0;
+}
+
+.big .a { color: #ffffff; }
+.big .b { color: #ff8b8b; }
+
+main {
+  max-width: 1100px;
+  margin: -20px auto 0 auto;
+  padding: 0 20px 60px 20px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 20px;
+}
+
+@media(max-width: 860px) {
+  main { grid-template-columns: 1fr; }
+  .demo { display: none; }
+}
+
+section {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-top: 6px solid #0a2f57;
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #0a2f57;
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  color: #586a7f;
+  margin: 10px 0 3px 0;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #d9e3ee;
+  border-radius: 8px;
+  background: #fdfdfd;
+  color: #14243a;
+  font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #29a9dc;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.row > * {
+  flex: 1;
+  min-width: 110px;
+}
+
+button {
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  background: #0a2f57;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+
+button:hover {
+  background: #0e5a96;
+}
+
+button.ghost {
+  background: transparent;
+  color: #0a2f57;
+  border: 2px solid #29a9dc;
+}
+
+button.danger {
+  background: transparent;
+  color: #cb3434;
+  border: 2px solid #cb3434;
+}
+
+button.small {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #586a7f;
+  margin-top: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+.scroll {
+  overflow-x: auto;
+}
+
+th {
+  text-align: left;
+  padding: 8px;
+  color: #586a7f;
+  border-bottom: 2px solid #d9e3ee;
+}
+
+td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #d9e3ee;
+}
+
+.cipher {
+  font-family: monospace;
+  color: #586a7f;
+}
+
+.plain {
+  color: #17805c;
+  font-weight: bold;
+}
+
+.empty {
+  text-align: center;
+  color: #586a7f;
+  padding: 20px;
+}
+
+.result {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #e1f3fb;
+  border-left: 5px solid #29a9dc;
+  font-size: 0.9rem;
+}
+
+.result.bad {
+  background: #fde8e8;
+  border-color: #cb3434;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  background: #17805c;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.toast.err {
+  background: #cb3434;
+}
+
+tr.hit td {
+  background: #d4f1f9;
+}
