@@ -3,6 +3,7 @@ var registros = [];
 var editando = null;
 var visibles = {};
 var CLAVE_LOCAL = "mis_expedientes";
+var CLAVE_TEMA = "modo_oscuro";
 
 // Función corta para buscar elementos por ID
 function $(id) {
@@ -208,7 +209,7 @@ function limpiarFormulario() {
   editando = null;
 }
 
-// Acciones de botones en la tabla (definidas globalmente para los onclick)
+// Acciones de botones en la tabla
 window.toggleVer = function(i) {
   var codigo = registros[i].codigo;
   visibles[codigo] = !visibles[codigo];
@@ -256,7 +257,6 @@ $("f").addEventListener("submit", function(e) {
     return;
   }
   
-  // Verificar si el código ya existe
   for (var i = 0; i < registros.length; i++) {
     if (registros[i].codigo === codigo && registros[i].codigo !== editando) {
       mostrarAviso("El código ya existe.", true);
@@ -432,6 +432,28 @@ $("demoBtn").addEventListener("click", function() {
   mostrarAviso("Datos de ejemplo cargados.");
 });
 
+// Lógica del Botón de Modo Oscuro / Claro
+var themeToggleBtn = $("themeToggleBtn");
+
+function aplicarTema(esOscuro) {
+  if (esOscuro) {
+    document.body.classList.add("dark-mode");
+    themeToggleBtn.textContent = "☀️ Modo Claro";
+  } else {
+    document.body.classList.remove("dark-mode");
+    themeToggleBtn.textContent = "🌙 Modo Oscuro";
+  }
+}
+
+themeToggleBtn.addEventListener("click", function() {
+  var esOscuroActual = document.body.classList.contains("dark-mode");
+  var nuevoEstado = !esOscuroActual;
+  aplicarTema(nuevoEstado);
+  try {
+    localStorage.setItem(CLAVE_TEMA, nuevoEstado ? "1" : "0");
+  } catch (e) {}
+});
+
 // Inicialización al cargar la página
 (function() {
   limpiarFormulario();
@@ -439,6 +461,11 @@ $("demoBtn").addEventListener("click", function() {
     var guardado = localStorage.getItem(CLAVE_LOCAL);
     if (guardado) {
       registros = JSON.parse(guardado);
+    }
+    // Cargar preferencia de tema guardada
+    var temaGuardado = localStorage.getItem(CLAVE_TEMA);
+    if (temaGuardado === "1") {
+      aplicarTema(true);
     }
   } catch (e) {
     registros = [];
