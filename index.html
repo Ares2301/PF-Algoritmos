@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archivo de expedientes</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div>
+      <h1>Archivo de expedientes</h1>
+      <p>Guarda, ordena y encuentra tus expedientes en un solo lugar. Todo es ficticio y cada descripción viaja cifrada.</p>
+      <div class="chips"><span><b id="count">0</b> expedientes</span><span>Ordenar</span><span>Buscar</span><span>Cifrar</span></div>
+    </div>
+    <div class="demo"><small>Así trabaja el cifrado César (+3)</small><div class="big"><span class="a">HOLA</span><span class="b">KROD</span></div><small>y vuelve a ser HOLA al descifrar</small></div>
+  </div>
+</header>
+<main>
+<div>
+  <section>
+    <h2 id="formTitle">Nuevo expediente</h2>
+    <form id="f">
+      <label for="codigo">Código único</label>
+      <input id="codigo" placeholder="EXP-006" autocomplete="off">
+      <div class="row">
+        <div><label for="nombre">Nombre</label><input id="nombre" autocomplete="off"></div>
+        <div><label for="apellido">Apellido</label><input id="apellido" autocomplete="off"></div>
+      </div>
+      <label for="fecha">Fecha de registro</label>
+      <input id="fecha" type="date">
+      <label for="descripcion">Descripción confidencial</label>
+      <textarea id="descripcion" placeholder="Escríbela con tranquilidad, se guarda cifrada."></textarea>
+      <div class="actions">
+        <button type="submit" id="saveBtn">Guardar expediente</button>
+        <button type="button" class="ghost" id="cancelBtn" style="display:none;">Cancelar edición</button>
+      </div>
+    </form>
+  </section>
+  <section>
+    <h2>Cifrado César</h2>
+    <label for="shift">Desplazamiento (tu llave)</label>
+    <input id="shift" type="number" min="1" max="26" value="3">
+    <p class="hint">Con +3, «HOLA» se convierte en «KROD». Para leer una descripción necesitas el mismo número con el que se cifró. Es un ejercicio educativo: César no ofrece seguridad real.</p>
+  </section>
+</div>
+
+<div>
+  <section>
+    <h2>Tus archivos</h2>
+    <div class="actions" style="margin-top:0">
+      <button class="ghost" id="openBtn">Abrir archivo JSON</button>
+      <input type="file" id="file" accept=".json" style="display:none;">
+      <button id="downBtn">Guardar en JSON</button>
+      <button class="ghost" id="demoBtn">Cargar ejemplo</button>
+    </div>
+    <p class="hint" id="status">Todavía no hay expedientes. Abre un archivo o crea el primero.</p>
+  </section>
+
+  <section>
+    <h2>Expedientes</h2>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>Código</th><th>Nombre</th><th>Fecha</th><th>Descripción</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ordenar</h2>
+    <div class="row">
+      <div><label for="sAlg">Algoritmo</label><select id="sAlg"><option value="burbuja">Burbuja</option><option value="seleccion">Selección</option></select></div>
+      <div><label for="sCampo">Ordenar por</label><select id="sCampo"><option value="codigo">Código</option><option value="nombre">Nombre</option></select></div>
+      <button id="sortBtn">Ordenar</button>
+    </div>
+    <div id="sortRes"></div>
+  </section>
+
+  <section>
+    <h2>Buscar por código</h2>
+    <div class="row">
+      <div><label for="qCodigo">Código</label><input id="qCodigo" placeholder="EXP-004" autocomplete="off"></div>
+      <div><label for="qAlg">Método</label><select id="qAlg"><option value="secuencial">Secuencial</option><option value="binaria">Binaria</option></select></div>
+      <button id="findBtn">Buscar</button>
+    </div>
+    <p class="hint">La búsqueda binaria necesita que la lista esté ordenada por código.</p>
+    <div id="findRes"></div>
+  </section>
+</div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
