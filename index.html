@@ -14,18 +14,14 @@
       <p>Guarda, ordena y encuentra tus expedientes en un solo lugar. Todo es ficticio y cada descripción viaja cifrada.</p>
       <div class="chips"><span><b id="count">0</b> expedientes</span><span>Ordenar</span><span>Buscar</span><span>Cifrar</span></div>
     </div>
-    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 15px;">
-      
-      <button id="themeToggleBtn" class="ghost small" style="color: #fff; border-color: rgba(255,255,255,0.4);"> Modo Oscuro</button>
-      <div class="demo"><small>Así trabaja el cifrado César (+3)</small><div class="big"><span class="a">HOLA</span><span class="b">KROD</span></div><small>y vuelve a ser HOLA al descifrar</small></div>
-    </div>
+    <div class="demo" aria-hidden="true"><small>Así trabaja el cifrado César (+3)</small><div class="big"><i class="a">HOLA</i><i class="b">KROD</i></div><small>y vuelve a ser HOLA al descifrar</small></div>
   </div>
 </header>
 <main>
 <div>
   <section>
     <h2 id="formTitle">Nuevo expediente</h2>
-    <form id="f">
+    <form id="f" novalidate>
       <label for="codigo">Código único</label>
       <input id="codigo" placeholder="EXP-006" autocomplete="off">
       <div class="row">
@@ -38,7 +34,7 @@
       <textarea id="descripcion" placeholder="Escríbela con tranquilidad, se guarda cifrada."></textarea>
       <div class="actions">
         <button type="submit" id="saveBtn">Guardar expediente</button>
-        <button type="button" class="ghost" id="cancelBtn" style="display:none;">Cancelar edición</button>
+        <button type="button" class="ghost" id="cancelBtn" hidden>Cancelar edición</button>
       </div>
     </form>
   </section>
@@ -55,7 +51,7 @@
     <h2>Tus archivos</h2>
     <div class="actions" style="margin-top:0">
       <button class="ghost" id="openBtn">Abrir archivo JSON</button>
-      <input type="file" id="file" accept=".json" style="display:none;">
+      <input type="file" id="file" accept=".json,application/json" hidden>
       <button id="downBtn">Guardar en JSON</button>
       <button class="ghost" id="demoBtn">Cargar ejemplo</button>
     </div>
@@ -94,7 +90,7 @@
   </section>
 </div>
 </main>
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status"></div>
 
 <script src="app.js"></script>
 </body>
