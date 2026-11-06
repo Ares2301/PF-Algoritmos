@@ -268,3 +268,50 @@ td {
 tr.hit td {
   background: #d4f1f9;
 }
+
+/* ==================== MODO OSCURO ==================== */
+body.dark-mode {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+body.dark-mode section {
+  background: #1f2937;
+  border-top-color: #3b82f6;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode label,
+body.dark-mode .hint,
+body.dark-mode th,
+body.dark-mode .empty,
+body.dark-mode .cipher {
+  color: #9ca3af;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background: #111827;
+  border-color: #374151;
+  color: #f3f4f6;
+}
+
+body.dark-mode td {
+  border-bottom-color: #374151;
+}
+
+body.dark-mode tr.hit td {
+  background: #1e3a8a;
+}
+
+body.dark-mode .result {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-left-color: #38bdf8;
+}
+
+body.dark-mode .result.bad {
+  background: #451a03;
+  border-color: #f87171;
+}
