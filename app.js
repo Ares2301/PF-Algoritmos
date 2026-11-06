@@ -276,7 +276,7 @@ function autoguardar(){
 function pintar(resaltar){
   var cuerpo = $("rows");
   if (registros.length === 0){
-    cuerpo.innerHTML = '<tr><td colspan="5" class="empty">Aquí aparecerán tus expedientes. Crea uno o abre un archivo JSON.</td></tr>';
+    cuerpo.innerHTML = '<tr><td colspan="5" class="empty">Aquí aparecerán los expedientes. Crea uno o abre un archivo JSON.</td></tr>';
   } else {
     var h = "";
     for (var i = 0; i < registros.length; i++){
@@ -360,7 +360,7 @@ function cargarTexto(texto){
     autoguardar(); pintar();
     aviso("Listo: cargué " + registros.length + " expedientes.");
   } catch (err){
-    aviso(typeof err === "string" ? err : "No pude leer ese archivo.", true);
+    aviso(typeof err === "string" ? err : "No se ha logrado leer el archivo.", true);
   }
 }
 $("openBtn").addEventListener("click", function(){ $("file").click(); });
@@ -381,11 +381,11 @@ $("downBtn").addEventListener("click", function(){
 });
 $("demoBtn").addEventListener("click", function(){
   var demo = [
-    ["EXP-003","Carlos","Méndez","2026-10-20","Revisión de caso ficticio, seguimiento pendiente"],
-    ["EXP-001","Ana","López","2026-10-16","Primera cita del caso ficticio, notas iniciales"],
+    ["EXP-003","Carlos","Méndez","2026-10-20","Revisión de caso numero 3, seguimiento pendiente"],
+    ["EXP-001","Ana","López","2026-10-16","Primera cita del caso numero 1, notas iniciales"],
     ["EXP-005","Lucía","Pérez","2026-10-28","Notas preparatorias sobre elemento de prueba"],
-    ["EXP-002","Bruno","Castillo","2026-10-18","Expediente ficticio para práctica de clase"],
-    ["EXP-004","Diana","Ramírez","2026-10-25","Caso ficticio en espera de revisión"]
+    ["EXP-002","Bruno","Castillo","2026-10-18","Expediente cifrado numero 2"],
+    ["EXP-004","Diana","Ramírez","2026-10-25","Caso numero 4 esperando revisión"]
   ];
   registros = [];
   for (var i = 0; i < demo.length; i++){
@@ -409,7 +409,7 @@ $("sortBtn").addEventListener("click", function(){
 $("findBtn").addEventListener("click", function(){
   var codigo = recortar($("qCodigo").value), alg = $("qAlg").value, caja = $("findRes");
   if (codigo === ""){ aviso("Escribe el código que quieres buscar.", true); return; }
-  if (registros.length === 0){ aviso("Aún no hay expedientes donde buscar.", true); return; }
+  if (registros.length === 0){ aviso("No hay expedientes donde buscar.", true); return; }
   if (alg === "binaria" && !ordenadaPorCodigo(registros)){
     caja.innerHTML = '<div class="result bad">Para buscar por mitades la lista debe estar ordenada por código. Ordénala arriba y vuelve a intentarlo.</div>';
     return;
@@ -423,7 +423,7 @@ $("findBtn").addEventListener("click", function(){
       ') en la posición ' + (pos + 1) + '. Búsqueda ' + metodo + ': <b>' + comparaciones + '</b> comparaciones.</div>';
   } else {
     pintar();
-    caja.innerHTML = '<div class="result bad">No hay ningún expediente con el código «' + escapar(codigo) + '». Búsqueda ' + metodo + ': <b>' + comparaciones + '</b> comparaciones.</div>';
+    caja.innerHTML = '<div class="result bad">No existe expediente con el código «' + escapar(codigo) + '». Búsqueda ' + metodo + ': <b>' + comparaciones + '</b> comparaciones.</div>';
   }
 });
 
