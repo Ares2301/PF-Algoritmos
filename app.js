@@ -381,11 +381,11 @@ $("downBtn").addEventListener("click", function(){
 });
 $("demoBtn").addEventListener("click", function(){
   var demo = [
-    ["EXP-003","Carlos","Méndez","2026-10-20","Revisión de caso numero 3, seguimiento pendiente"],
-    ["EXP-001","Ana","López","2026-10-16","Primera cita del caso numero 1, notas iniciales"],
+    ["EXP-003","Carlos","Méndez","2026-10-20","Revisión de caso numero tres, seguimiento pendiente"],
+    ["EXP-001","Ana","López","2026-10-16","Primera cita del caso numero uno, notas iniciales"],
     ["EXP-005","Lucía","Pérez","2026-10-28","Notas preparatorias sobre elemento de prueba"],
-    ["EXP-002","Bruno","Castillo","2026-10-18","Expediente cifrado numero 2"],
-    ["EXP-004","Diana","Ramírez","2026-10-25","Caso numero 4 esperando revisión"]
+    ["EXP-002","Bruno","Castillo","2026-10-18","Expediente cifrado numero dos"],
+    ["EXP-004","Diana","Ramírez","2026-10-25","Caso numero cuatro esperando revisión"]
   ];
   registros = [];
   for (var i = 0; i < demo.length; i++){
